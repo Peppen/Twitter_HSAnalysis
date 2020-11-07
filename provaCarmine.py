@@ -1,1 +1,0 @@
-print("Silvio sei bello")
