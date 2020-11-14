@@ -2,10 +2,10 @@ import tweepy as tw
 import pandas as pd
 import csv
 
-consumer_key = "0aJnar4c0EEjpG4JXwI1YVtW4"
-consumer_secret = "VtotsX0e4CN0igfQwAq9lKzeJWY67OY2KcJCFa0To9d0l6WgTR"
-access_token = "1324015425546522631-27RiZ39mvUggNR1TPMd0mYkVHCCRWC"
-access_token_secret = "DcHVq9sakowrxZORAzDQeeFZU9Y7GMQb2XAVbRHpPOuap"
+consumer_key = "UDdkyB8Ic9cS6LnANJE04zUUy"
+consumer_secret = "XL1HdDN09pYa53znWlKVx7CR5C2nIsgv3Z0LITYY9Xuqs14YBZ"
+access_token = "1324310603318677504-l7zTT3OfLsXNyCCOaLw6pV7lOEBsZG"
+access_token_secret = "ryvrGpAaflFWJORgAtGC2Q215Qaoxj1ZLCO8yogo8Zu90"
 
 auth = tw.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -13,13 +13,13 @@ auth.set_access_token(access_token, access_token_secret)
 api = tw.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 # To obtain therock tweets
-other_user = "therock"
+other_user = "realDonaldTrump"
 data = []
 for status in tw.Cursor(api.user_timeline, screen_name=other_user).items(10):
     data.append(status.text)
 print(data)
 dataframe = pd.DataFrame(data)
-dataframe.to_csv("dataFrame.csv", index=False, header=False)
+dataframe.to_csv("politici_trump.csv", index=False, header=False)
 
 
 replies = []
