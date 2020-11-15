@@ -39,17 +39,11 @@ if __name__ == '__main__':
 	categoria = "politici"
 	get_tweets(nome_utente, categoria)
 
-    #get tweets per username passato a command line
-	#se lo eseguo da command line va passato il nome dell'utente
-	#eliminando l'if e passando il nome dell'utente possiamo eseguirlo da GUI
-    #if len(sys.argv) == 2:
-    	#get_tweets("therock")
-    #else:
-        #print("Error: enter one username")
+    #metodo alternativo:
+	#scorrere tra più utenti, passo più username così verranno
+	#creati tanti csv quanti sono gli utenti
 
+	#users = ['therock','realDonaldTrump']
 
-    #metodo alternativo: scorrere tra più utenti
-	# users = ['user1','user2']
-
-	# for user in users:
-	# 	get_tweets(user)
+	#for user in users:
+		#get_tweets(user,categoria)
