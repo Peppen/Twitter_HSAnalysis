@@ -1,5 +1,7 @@
 import csv
 import tweepy
+import pandas as pd
+import vaderSentiment
 
 #Credenziali Twitter API
 
@@ -8,36 +10,52 @@ consumer_secret = ""
 access_key = ""
 access_secret = ""
 
-#Metodo che scarica gli ultimi tweet di un utente
+#Function to download latest tweets of a user and create a csv
 def get_tweets(username, category):
 
 	auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 	auth.set_access_token(access_key, access_secret)
 	api = tweepy.API(auth)
 
-	#Numero di tweet da scaricare
+	#Number of tweets to download
 	number_of_tweets = 100
 
-	#get tweets
-	tweets_for_csv = []
+	#get tweets randomly between a number of 1 to 100
+	tweets_for_csv = [["Username","Data","Tweet"]]
 	for tweet in tweepy.Cursor(api.user_timeline, screen_name = username).items(number_of_tweets):
-        #create array of tweet information: username, tweet id, date/time, text
-		tweets_for_csv.append([username, tweet.id_str, tweet.created_at, tweet.text.encode("utf-8")])
+        #create array of tweet information: username, date/time, text
+		tweets_for_csv.append([username, tweet.created_at, tweet.text.encode("ascii","ignore")])
+	print(len(tweets_for_csv))
 
-	#Scrivo in un csv dall'array di tweets
-	outfile = category+"_"+username +".csv"
+	#Writing tweet obtained in a csv
+	header = ['Username', 'Data', 'Tweet']
+	outfile = category+"_"+username+".csv"
 	print("writing to " + outfile)
-	with open(outfile, 'w+') as file:
-		writer = csv.writer(file, delimiter=',')
+	#Adding tweets
+	with open(outfile, 'w', newline='') as file:
+		writer = csv.writer(file,delimiter = ',')
 		writer.writerows(tweets_for_csv)
+		print("lo faccio")
 
 
-#Lo eseguiamo da pycharm e non da command line
+
+#Calculate score for each tweet and append it to the csv (to complete)
+def calculate_vader_score(username, category):
+	text_for_vader = []
+	df = pd.read_csv(category+"_"+username+".csv")
+	for i,row in df.iterrows():
+		text_for_vader.append(row["Tweet"].replace('RT',''))
+
+
+
+
+
 if __name__ == '__main__':
 	#Fornisco l'username e categoria
 	nome_utente="realDonaldTrump"
 	categoria = "politici"
 	get_tweets(nome_utente, categoria)
+	calculate_vader_score(nome_utente,categoria)
 
     #metodo alternativo:
 	#scorrere tra più utenti, passo più username così verranno
@@ -47,3 +65,5 @@ if __name__ == '__main__':
 
 	#for user in users:
 		#get_tweets(user,categoria)
+
+#Estrazione dal CSV unicamente la parte di nostro interesse (contenuto)
