@@ -9,7 +9,7 @@ access_key = ""
 access_secret = ""
 
 #Metodo che scarica gli ultimi tweet di un utente
-def get_tweets(username):
+def get_tweets(username, category):
 
 	auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 	auth.set_access_token(access_key, access_secret)
@@ -25,9 +25,7 @@ def get_tweets(username):
 		tweets_for_csv.append([username, tweet.id_str, tweet.created_at, tweet.text.encode("utf-8")])
 
 	#Scrivo in un csv dall'array di tweets
-	#Setto il nome della categoria
-	nome_categoria="politici"
-	outfile = nome_categoria+"_"+username +".csv"
+	outfile = category+"_"+username +".csv"
 	print("writing to " + outfile)
 	with open(outfile, 'w+') as file:
 		writer = csv.writer(file, delimiter=',')
@@ -36,9 +34,10 @@ def get_tweets(username):
 
 #Lo eseguiamo da pycharm e non da command line
 if __name__ == '__main__':
-	#Fornisco l'username
+	#Fornisco l'username e categoria
 	nome_utente="realDonaldTrump"
-	get_tweets(nome_utente)
+	categoria = "politici"
+	get_tweets(nome_utente, categoria)
 
     #get tweets per username passato a command line
 	#se lo eseguo da command line va passato il nome dell'utente
