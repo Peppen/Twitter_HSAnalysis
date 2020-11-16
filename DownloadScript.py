@@ -2,6 +2,13 @@ import csv
 import tweepy
 import pandas as pd
 import vaderSentiment
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+analyser = SentimentIntensityAnalyzer()
+
+def sentiment_analyzer_scores(sentence):
+    score = analyser.polarity_scores(sentence)
+    print("{:-<40} {}".format(sentence, str(score)))
 
 #Credenziali Twitter API
 
@@ -35,19 +42,22 @@ def get_tweets(username, category):
 	with open(outfile, 'w', newline='') as file:
 		writer = csv.writer(file,delimiter = ',')
 		writer.writerows(tweets_for_csv)
-		print("lo faccio")
 
 
-
-#Calculate score for each tweet and append it to the csv (to complete)
+# Use this function to do some tests
+# Calculate score for each tweet and append it to the csv (to complete)
 def calculate_vader_score(username, category):
 	text_for_vader = []
-	df = pd.read_csv(category+"_"+username+".csv")
-	for i,row in df.iterrows():
-		text_for_vader.append(row["Tweet"].replace('RT',''))
+	df = pd.read_csv(category + "_" + username + ".csv")
+	for i, row in df.iterrows():
+		text_for_vader.append(row["Tweet"].replace('RT', ''))
+	for x in text_for_vader:
+		if(x[0] == 'b'):
+			x = x[1:]
 
-
-
+#Your code here
+		print(x)
+		sentiment_analyzer_scores(x)
 
 
 if __name__ == '__main__':
