@@ -10,10 +10,10 @@ def sentiment_analyzer_scores(sentence):
     print("{:-<40} {}".format(sentence, str(score)))
 
 
-consumer_key = ""
-consumer_secret = ""
-access_token = ""
-access_token_secret = ""
+consumer_key = "UDdkyB8Ic9cS6LnANJE04zUUy"
+consumer_secret = "XL1HdDN09pYa53znWlKVx7CR5C2nIsgv3Z0LITYY9Xuqs14YBZ"
+access_token = "1324310603318677504-l7zTT3OfLsXNyCCOaLw6pV7lOEBsZG"
+access_token_secret = "ryvrGpAaflFWJORgAtGC2Q215Qaoxj1ZLCO8yogo8Zu90"
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -58,8 +58,8 @@ if __name__ == '__main__':
     # Fornisco l'username e categoria
     username = "realDonaldTrump"
     category = "politici"
-    calculate_vader_score(username, category)
     csv_from_tweets(username, category)
+    calculate_vader_score(username, category)
 
 	# users = ['therock','realDonaldTrump']
 	# for user in users:
