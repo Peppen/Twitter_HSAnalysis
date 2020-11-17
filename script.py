@@ -1,11 +1,9 @@
 import csv
 import tweepy
 import pandas as pd
-import vaderSentiment
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 analyser = SentimentIntensityAnalyzer()
-
 
 def sentiment_analyzer_scores(sentence):
     score = analyser.polarity_scores(sentence)
@@ -34,7 +32,7 @@ def get_tweets(username, category):
 
     # Writing tweet obtained in a csv
     header = ['Username', 'Data', 'Tweet']
-    outfile = category + "_" + username + "tweets.csv"
+    outfile = category + "_" + username + "_tweets.csv"
     print("writing to " + outfile)
     # Adding tweets
     with open(outfile, 'w', newline='') as file:
@@ -46,7 +44,7 @@ def get_tweets(username, category):
 # Calculate score for each tweet and append it to the csv (to complete)
 def calculate_vader_score(username, category):
     text_for_vader = []
-    df = pd.read_csv(category + "_" + username + ".csv")
+    df = pd.read_csv(category + "_" + username + "_tweets.csv")
     for i, row in df.iterrows():
         text_for_vader.append(row["Tweet"].replace('RT', ''))
     for x in text_for_vader:
@@ -61,15 +59,13 @@ def calculate_vader_score(username, category):
 def get_comments_from_tweets(username, category):
     replies = []
     for full_tweets in tweepy.Cursor(api.user_timeline, screen_name=username, timeout=999999).items(2):
-        replies.append([username, full_tweets.id_str, full_tweets.created_at, full_tweets.text.encode("utf-8")])
+        replies.append([username, full_tweets.id_str, full_tweets.created_at, full_tweets.text.encode("ascii", "ignore")])
         print("Full_tweet: " + full_tweets.text)
-        for tweet in tweepy.Cursor(api.search, q='to:' + username, result_type='recent', timeout=999999).items(1000):
+        for tweet in tweepy.Cursor(api.search, q='to:' + username, result_type='recent', timeout=999999).items(10):
             if hasattr(tweet, 'in_reply_to_status_id_str'):
-                if tweet.in_reply_to_status_id_str == full_tweets.id_str:
-                    replies.append([tweet.text.encode("utf-8")])
-                    print("Tweet :", tweet.text)
-    for elements in replies:
-        print("Replies :", elements)
+            # if tweet.in_reply_to_status_id_str == full_tweets.id_str:
+                replies.append([tweet.text.encode("ascii", "ignore")])
+                print("Tweet :", tweet.text)
     outfile = category + "_" + username + "_comments.csv"
     print("writing to " + outfile)
     with open(outfile, 'w+') as file:
