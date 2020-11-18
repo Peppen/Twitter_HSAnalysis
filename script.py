@@ -2,9 +2,10 @@ import csv
 import tweepy
 import pandas as pd
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import numpy as np
+import re
 
 analyser = SentimentIntensityAnalyzer()
-
 def sentiment_analyzer_scores(sentence):
     score = analyser.polarity_scores(sentence)
     print("{:-<40} {}".format(sentence, str(score)))
@@ -24,13 +25,25 @@ api = tweepy.API(auth)
 def calculate_vader_score(username, category):
     text_for_vader = []
     df = pd.read_csv(category + "_" + username + "_all.csv")
+    #Reply cleaning
     for i, row in df.iterrows():
-        text_for_vader.append(row["Reply"].replace('RT', ''))
-    for x in text_for_vader:
-        if x[0] == 'b':
-            x = x[1:]
+        row["Reply"] = re.sub(r"https?://[A-Za-z0-9./]*", '', row["Reply"])
+        row["Reply"] = re.sub(r"@[\w]*",'', row["Reply"])
+        row["Reply"] = re.sub(r"RT @[\w]*:",'',row["Reply"])
+        row["Reply"] = re.sub(r"RT :",'',row["Reply"])
+        row["Reply"] = row["Reply"].replace("RT",'')
+        if row["Reply"][0] == 'b':
+            row["Reply"] = row["Reply"][1:]
+        df.loc[i,"Reply"] = row["Reply"]
 
-        sentiment_analyzer_scores(x)
+        print(len(df.loc[i,"Reply"]))
+            #df.drop(df[i])
+
+    df.to_csv("test_all.csv",sep=',')
+
+    #for i,row in text_for_vader:
+
+    #sentiment_analyzer_scores(x)
 
 
 def csv_from_tweets(username, category):
