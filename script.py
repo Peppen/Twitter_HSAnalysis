@@ -4,6 +4,8 @@ import pandas as pd
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import numpy as np
 import re
+import logging
+import time
 
 analyser = SentimentIntensityAnalyzer()
 def sentiment_analyzer_scores(sentence):
@@ -36,8 +38,10 @@ def calculate_vader_score(username, category):
             row["Reply"] = row["Reply"][1:]
         df.loc[i,"Reply"] = row["Reply"]
 
-        print(len(df.loc[i,"Reply"]))
-            #df.drop(df[i])
+        #print(len(df.loc[i,"Reply"]))
+        print(df.loc[i,"Reply"][0:3])
+        df = df[df.Reply != "' '"]
+        df = df[df.Reply != "'  '"]
 
     df.to_csv("test_all.csv",sep=',')
 
@@ -50,15 +54,19 @@ def csv_from_tweets(username, category):
     #CSV HEADER
     tweet = [["ID","Username", "Data", "Tweet", "Reply"]]
     i=0
+    #non_bmp_map = dict.fromkeys(range(0x10000, sys.maxunicode + 1), 0xfffd)
     #iterate through tweets
     for full_tweets in tweepy.Cursor(api.user_timeline, screen_name=username, timeout=999999).items(10):
+        print("contatweet")
         i+=1
         #iterate through replies
-        for full_replies in tweepy.Cursor(api.search, q='to:' + username, result_type='recent', timeout=999999).items(10):
+        for full_replies in tweepy.Cursor(api.search, q='to:' + username, since_id=full_tweets.id_str, timeout=999999).items(10):
+            print("contareply")
             if hasattr(full_replies, 'in_reply_to_status_id_str'):
+                #if full_tweets.id_str == str(full_replies.in_reply_to_status_id_str):
                 #create an array list composed by the tweet and its replies
                 tweet.append([i,username, full_tweets.created_at, full_tweets.text.encode("ascii", "ignore"), full_replies.text.encode("ascii","ignore")])
-    #print(tweet)
+
 
     outfile = category + "_" + username + "_all.csv"
     print("writing to " + outfile)
