@@ -13,10 +13,10 @@ def sentiment_analyzer_scores(sentence):
     print("{:-<40} {}".format(sentence, str(score)))
 
 
-consumer_key = ""
-consumer_secret = ""
-access_token = ""
-access_token_secret = ""
+consumer_key = "1XljVbVeF1PogVImvglIrXzBS"
+consumer_secret = "KuS7sQNKlSi1qvC5ahYXkYPSMwEMY3rKj8EMT3lwBJj0BMX5Gs"
+access_token = "1328025712528416768-9n725S12PhFtfGHeN9V3xWQKJ02ijR"
+access_token_secret = "8yRfO00XGF571Qnms6dLkU80NJHe41206kVIyBz9s6K9G"
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -56,16 +56,18 @@ def csv_from_tweets(username, category):
     i=0
     #non_bmp_map = dict.fromkeys(range(0x10000, sys.maxunicode + 1), 0xfffd)
     #iterate through tweets
-    for full_tweets in tweepy.Cursor(api.user_timeline, screen_name=username, timeout=999999).items(10):
-        print("contatweet")
+    for full_tweets in tweepy.Cursor(api.user_timeline, screen_name=username, timeout=999999).items(2):
+        print(full_tweets.id_str)
         i+=1
         #iterate through replies
-        for full_replies in tweepy.Cursor(api.search, q='to:' + username, since_id=full_tweets.id_str, timeout=999999).items(10):
-            print("contareply")
+        for full_replies in tweepy.Cursor(api.search, q='to:' + username, since_id = full_tweets.id , timeout=999999).items(10):
+            #print("contareply")
+            #print(full_tweets.id_str)
+            #print("id reply"+str(full_replies.in_reply_to_status_id_str))
             if hasattr(full_replies, 'in_reply_to_status_id_str'):
-                #if full_tweets.id_str == str(full_replies.in_reply_to_status_id_str):
-                #create an array list composed by the tweet and its replies
-                tweet.append([i,username, full_tweets.created_at, full_tweets.text.encode("ascii", "ignore"), full_replies.text.encode("ascii","ignore")])
+                if full_replies.in_reply_to_status_id_str == full_tweets.id_str:
+                    #create an array list composed by the tweet and its replies
+                    tweet.append([i,username, full_tweets.created_at, full_tweets.text.encode("ascii", "ignore"), full_replies.text.encode("ascii","ignore")])
 
 
     outfile = category + "_" + username + "_all.csv"
