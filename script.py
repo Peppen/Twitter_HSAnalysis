@@ -13,10 +13,10 @@ def sentiment_analyzer_scores(sentence):
     print("{:-<40} {}".format(sentence, str(score)))
 
 
-consumer_key = "1XljVbVeF1PogVImvglIrXzBS"
-consumer_secret = "KuS7sQNKlSi1qvC5ahYXkYPSMwEMY3rKj8EMT3lwBJj0BMX5Gs"
-access_token = "1328025712528416768-9n725S12PhFtfGHeN9V3xWQKJ02ijR"
-access_token_secret = "8yRfO00XGF571Qnms6dLkU80NJHe41206kVIyBz9s6K9G"
+consumer_key = ""
+consumer_secret = ""
+access_token = ""
+access_token_secret = ""
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
