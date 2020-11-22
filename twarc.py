@@ -36,6 +36,7 @@ def csv_cleaning(username, category):
         row["Reply"] = re.sub(r"@[\w]*",'', row["Reply"])
         row["Reply"] = re.sub(r"RT @[\w]*:",'',row["Reply"])
         row["Reply"] = re.sub(r"RT :",'',row["Reply"])
+        row["Reply"] = re.sub(r"'",'',row["Reply"])
         row["Reply"] = row["Reply"].replace("RT",'')
         #row["Reply"] = re.sub(r"[^a-zA-Z]",' ',row["Reply"])
         if row["Reply"][0] == 'b':
