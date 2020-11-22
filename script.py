@@ -1,89 +1,108 @@
+from twarc import Twarc
 import csv
-import tweepy
+import re
 import pandas as pd
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-import numpy as np
-import re
-import logging
-import time
 
-analyser = SentimentIntensityAnalyzer()
-def sentiment_analyzer_scores(sentence):
-    score = analyser.polarity_scores(sentence)
-    print("{:-<40} {}".format(sentence, str(score)))
+t = Twarc("", "", "", "")
 
-
-consumer_key = ""
-consumer_secret = ""
-access_token = ""
-access_token_secret = ""
-
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
-api = tweepy.API(auth)
-
-# Use this function to do some tests
-# Calculate score for each tweet and append it to the csv (to complete)
-def calculate_vader_score(username, category):
-    text_for_vader = []
-    df = pd.read_csv(category + "_" + username + "_all.csv")
-    #Reply cleaning
-    for i, row in df.iterrows():
-        row["Reply"] = re.sub(r"https?://[A-Za-z0-9./]*", '', row["Reply"])
-        row["Reply"] = re.sub(r"@[\w]*",'', row["Reply"])
-        row["Reply"] = re.sub(r"RT @[\w]*:",'',row["Reply"])
-        row["Reply"] = re.sub(r"RT :",'',row["Reply"])
-        row["Reply"] = row["Reply"].replace("RT",'')
-        if row["Reply"][0] == 'b':
-            row["Reply"] = row["Reply"][1:]
-        df.loc[i,"Reply"] = row["Reply"]
-
-        #print(len(df.loc[i,"Reply"]))
-        print(df.loc[i,"Reply"][0:3])
-        df = df[df.Reply != "' '"]
-        df = df[df.Reply != "'  '"]
-
-    df.to_csv("test_all.csv",sep=',')
-
-    #for i,row in text_for_vader:
-
-    #sentiment_analyzer_scores(x)
+# Function that create the .csv of replies
+def get_replies(username, category):
+    i = 0
+    replies = [["Username", "Data", "Reply"]]
+    # Select randomly a tweet from the selected user (username)
+    for tweet in t.search(username, max_pages=1, result_type='recent'):
+        # Get replies to that tweet
+        for reply in t.replies(tweet):
+            replies.append([username, reply["created_at"], reply["full_text"].encode("ascii", "ignore")])
+            if i == 100:
+                break
+            i += 1
 
 
-def csv_from_tweets(username, category):
-    #CSV HEADER
-    tweet = [["ID","Username", "Data", "Tweet", "Reply"]]
-    i=0
-    #non_bmp_map = dict.fromkeys(range(0x10000, sys.maxunicode + 1), 0xfffd)
-    #iterate through tweets
-    for full_tweets in tweepy.Cursor(api.user_timeline, screen_name=username, timeout=999999).items(2):
-        print(full_tweets.id_str)
-        i+=1
-        #iterate through replies
-        for full_replies in tweepy.Cursor(api.search, q='to:' + username, since_id = full_tweets.id , timeout=999999).items(10):
-            #print("contareply")
-            #print(full_tweets.id_str)
-            #print("id reply"+str(full_replies.in_reply_to_status_id_str))
-            if hasattr(full_replies, 'in_reply_to_status_id_str'):
-                if full_replies.in_reply_to_status_id_str == full_tweets.id_str:
-                    #create an array list composed by the tweet and its replies
-                    tweet.append([i,username, full_tweets.created_at, full_tweets.text.encode("ascii", "ignore"), full_replies.text.encode("ascii","ignore")])
-
-
-    outfile = category + "_" + username + "_all.csv"
+    outfile = "./" + category + "/" + username + "_replies.csv"
     print("writing to " + outfile)
     with open(outfile, 'w', newline='') as file:
         writer = csv.writer(file, delimiter=',')
-        writer.writerows(tweet)
+        writer.writerows(replies)
+
+
+# Function that clean replies from everything that is not meaningful to vader
+def csv_cleaning(username, category):
+    df = pd.read_csv("./"+category+"/"+username+"_replies.csv")
+    # Reply cleaning
+    for i, row in df.iterrows():
+        row["Reply"] = re.sub(r"https?://[A-Za-z0-9./]*", '', row["Reply"])
+        row["Reply"] = re.sub(r"@[\w]*", '', row["Reply"])
+        row["Reply"] = re.sub(r"RT @[\w]*:", '', row["Reply"])
+        row["Reply"] = re.sub(r"RT :", '', row["Reply"])
+        row["Reply"] = row["Reply"].replace("RT", '')
+
+        # Cleaning quotes from row Reply
+        row["Reply"] = row["Reply"].replace("  ", '')
+        row["Reply"] = row["Reply"].replace("   ", '')
+        row["Reply"] = row["Reply"].replace("    ", '')
+
+        # Deleting 'b' char at the beginning of the text
+        if row["Reply"][0] == 'b':
+            row["Reply"] = row["Reply"][1:]
+
+        # Update the dataframe with the new rows
+        df.loc[i, "Reply"] = row["Reply"]
+
+        # Deleting rows that have no replies
+        df = df[df.Reply != "' '"]
+        df = df[df.Reply != "'  '"]
+        df = df[df.Reply != "'   '"]
+
+    df.to_csv("./"+category+"/"+username+"_replies.csv",sep=',',index=False)
+
+# Function to calculate vader score and add it to the .csv
+def calculate_vader_score(username, category):
+    analyser = SentimentIntensityAnalyzer()
+    vader_score = []
+    df = pd.read_csv("./"+category+"/"+username+"_replies.csv")
+
+    # Declare variables for scores
+    compound_list = []
+    positive_list = []
+    negative_list = []
+    neutral_list = []
+
+    # Calculating vader score for each reply
+    for i in range(df['Reply'].shape[0]):
+        # print(analyser.polarity_scores(sentiments_pd['text'][i]))
+        compound = analyser.polarity_scores(df['Reply'][i])["compound"]
+        pos = analyser.polarity_scores(df['Reply'][i])["pos"]
+        neu = analyser.polarity_scores(df['Reply'][i])["neu"]
+        neg = analyser.polarity_scores(df['Reply'][i])["neg"]
+
+        vader_score.append({"Compound": compound,
+                            "Positive": pos,
+                            "Negative": neg,
+                            "Neutral": neu
+                            })
+
+    # Adding vader scores as columns to .csv file
+    sentiments_score = pd.DataFrame.from_dict(vader_score)
+    df = df.join(sentiments_score)
+
+    # Dropping rows that aren't calculated well by vader
+    for i, row in df.iterrows():
+        if(row["Neutral"]==1.0):
+            df.drop(i,inplace=True)
+    # Adding an index column
+    id = range(1, len(df) + 1)
+    df.insert(0,"ID",id)
+
+    df.to_csv("./"+category+"/"+username+"_replies.csv",sep=',',index=False)
 
 
 if __name__ == '__main__':
     # Fornisco l'username e categoria
     username = "realDonaldTrump"
-    category = "politici"
-    csv_from_tweets(username, category)
+    category = "Politici"
+    get_replies(username, category)
+    csv_cleaning(username, category)
     calculate_vader_score(username, category)
 
-	# users = ['therock','realDonaldTrump']
-	# for user in users:
-		# get_tweets(user,categoria)
