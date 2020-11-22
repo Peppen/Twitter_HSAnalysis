@@ -20,7 +20,7 @@ def get_replies(username, category):
             if i == 10:
                 break
 
-    outfile = category + "_" + username + "_all.csv"
+    outfile = "./" + category + "/" + username + "_replies.csv"
     print("writing to " + outfile)
     with open(outfile, 'w', newline='') as file:
         writer = csv.writer(file, delimiter=',')
@@ -28,8 +28,8 @@ def get_replies(username, category):
 
 
 def csv_cleaning(username, category):
-    df = pd.read_csv(category + "_" + username + "_all.csv")
-    # Reply cleaning
+    df = pd.read_csv("./"+category+"/"+username+"_replies.csv")
+    #Reply cleaning
     for i, row in df.iterrows():
         row["Reply"] = re.sub(r"https?://[A-Za-z0-9./]*", '', row["Reply"])
         row["Reply"] = re.sub(r"@[\w]*", '', row["Reply"])
@@ -52,13 +52,12 @@ def csv_cleaning(username, category):
         df = df[df.Reply != "'  '"]
         df = df[df.Reply != "'   '"]
 
-    df.to_csv("test_all.csv", sep=',', index=False)
-
+    df.to_csv("./"+category+"/"+username+"_replies.csv",sep=',',index=False)
 
 def calculate_vader_score(username, category):
     analyser = SentimentIntensityAnalyzer()
     vader_score = []
-    df = pd.read_csv("test_all.csv")
+    df = pd.read_csv("./"+category+"/"+username+"_replies.csv")
 
     # Declare variables for scores
     compound_list = []
@@ -81,14 +80,14 @@ def calculate_vader_score(username, category):
     sentiments_score = pd.DataFrame.from_dict(vader_score)
     df = df.join(sentiments_score)
     df.head()
-    df.to_csv("test_all.csv", sep=',', index=False)
+    df.to_csv("./"+category+"/"+username+"_replies.csv",sep=',',index=False)
 
 
 if __name__ == '__main__':
     # Fornisco l'username e categoria
     username = "realDonaldTrump"
-    category = "politici"
-    #get_replies(username, category)
+    category = "Politici"
+    get_replies(username, category)
     csv_cleaning(username, category)
     calculate_vader_score(username, category)
 
