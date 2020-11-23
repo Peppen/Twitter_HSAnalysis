@@ -90,7 +90,7 @@ def calculate_vader_score(username, category):
 
     # Dropping rows that aren't calculated well by vader
     for i, row in df.iterrows():
-        if (row["Neutral"] == 1.0):
+        if row["Neutral"] == 1.0:
             df.drop(i, inplace=True)
     # Adding an index column
     id = range(1, len(df) + 1)
@@ -101,20 +101,19 @@ def calculate_vader_score(username, category):
 
 def calculate_score(username, category):
     df = pd.read_csv("./" + category + "/" + username + "_replies.csv")
-    rate = df[{"Positive", "Negative"}]
     positive_rate = df["Positive"]
     negative_rate = df["Negative"]
-    pos_comment = 0
-    neg_comment = 0
+    pos_comments = 0
+    neg_comments = 0
     for positive in positive_rate:
         for negative in negative_rate:
             if negative > positive:
-                pos_comment += 1
+                neg_comments += 1
             else:
-                neg_comment += 1
+                pos_comments += 1
 
-    print("Rate of positive comment for " + category + "/" + username + "_replies.csv is " + str(int((pos_comment/len(df))/len(df) * 100)) + "%")
-    print("Rate of negative comment for " + category + "/" + username + "_replies.csv is " + str(int((neg_comment/len(df))/len(df) * 100)) + "%")
+    print("Rate of positive comments for " + category + "/" + username + "_replies.csv is " + str(round(pos_comments/len(df)/len(df) * 100,2)) + "%")
+    print("Rate of negative comments for " + category + "/" + username + "_replies.csv is " + str(round(neg_comments/len(df)/len(df) * 100,2)) + "%")
 
 
 if __name__ == '__main__':
