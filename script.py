@@ -5,6 +5,8 @@ import pandas as pd
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 t = Twarc("", "", "", "")
+rateFile = "rates.csv"
+rates = [["Username", "Positive Rate", "Negative Rate"]]
 
 
 # Function that create the .csv of replies
@@ -112,8 +114,16 @@ def calculate_score(username, category):
             else:
                 pos_comments += 1
 
-    print("Rate of positive comments for " + category + "/" + username + "_replies.csv is " + str(round(pos_comments/len(df)/len(df) * 100,2)) + "%")
-    print("Rate of negative comments for " + category + "/" + username + "_replies.csv is " + str(round(neg_comments/len(df)/len(df) * 100,2)) + "%")
+    rates.append([username, round(pos_comments / len(df) / len(df) * 100, 2), round(neg_comments / len(df) / len(df) * 100, 2)])
+
+    print("writing to " + rateFile)
+    with open(rateFile, 'w', newline='') as file:
+        writer = csv.writer(file, delimiter=',')
+        writer.writerows(rates)
+    # print("Rate of positive comments for " + category + "/" + username + "_replies.csv is " + str(
+    #     round(pos_comments / len(df) / len(df) * 100, 2)) + "%")
+    # print("Rate of negative comments for " + category + "/" + username + "_replies.csv is " + str(
+    #     round(neg_comments / len(df) / len(df) * 100, 2)) + "%")
 
 
 if __name__ == '__main__':
