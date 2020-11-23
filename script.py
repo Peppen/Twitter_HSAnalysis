@@ -113,9 +113,8 @@ def calculate_score(username, category):
             else:
                 neg_comment += 1
 
-    print(rate)
-    print((pos_comment/len(df))/len(df) * 100)
-    print((neg_comment/len(df)/len(df)) * 100)
+    print("Rate of positive comment for " + category + "/" + username + "_replies.csv is " + str(int((pos_comment/len(df))/len(df) * 100)) + "%")
+    print("Rate of positive comment for " + category + "/" + username + "_replies.csv is " + str(int((neg_comment/len(df))/len(df) * 100)) + "%")
 
 
 if __name__ == '__main__':
