@@ -6,7 +6,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 t = Twarc("", "", "", "")
 rateFile = "rates.csv"
-rates = [["Username", "Positive Rate", "Negative Rate"]]
+rates = [["Username", "Category", "Positive Rate", "Negative Rate"]]
 
 
 # Function that create the .csv of replies
@@ -114,7 +114,7 @@ def calculate_score(username, category):
             else:
                 pos_comments += 1
 
-    rates.append([username, round(pos_comments / len(df) / len(df) * 100, 2), round(neg_comments / len(df) / len(df) * 100, 2)])
+    rates.append([username, category, round(pos_comments / len(df) / len(df) * 100, 2), round(neg_comments / len(df) / len(df) * 100, 2)])
 
     print("writing to " + rateFile)
     with open(rateFile, 'w', newline='') as file:
