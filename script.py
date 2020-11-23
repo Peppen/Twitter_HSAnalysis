@@ -6,6 +6,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 t = Twarc("", "", "", "")
 
+
 # Function that create the .csv of replies
 def get_replies(username, category):
     i = 0
@@ -19,7 +20,6 @@ def get_replies(username, category):
                 break
             i += 1
 
-
     outfile = "./" + category + "/" + username + "_replies.csv"
     print("writing to " + outfile)
     with open(outfile, 'w', newline='') as file:
@@ -29,7 +29,7 @@ def get_replies(username, category):
 
 # Function that clean replies from everything that is not meaningful to vader
 def csv_cleaning(username, category):
-    df = pd.read_csv("./"+category+"/"+username+"_replies.csv")
+    df = pd.read_csv("./" + category + "/" + username + "_replies.csv")
     # Reply cleaning
     for i, row in df.iterrows():
         row["Reply"] = re.sub(r"https?://[A-Za-z0-9./]*", '', row["Reply"])
@@ -55,13 +55,14 @@ def csv_cleaning(username, category):
         df = df[df.Reply != "'  '"]
         df = df[df.Reply != "'   '"]
 
-    df.to_csv("./"+category+"/"+username+"_replies.csv",sep=',',index=False)
+    df.to_csv("./" + category + "/" + username + "_replies.csv", sep=',', index=False)
+
 
 # Function to calculate vader score and add it to the .csv
 def calculate_vader_score(username, category):
     analyser = SentimentIntensityAnalyzer()
     vader_score = []
-    df = pd.read_csv("./"+category+"/"+username+"_replies.csv")
+    df = pd.read_csv("./" + category + "/" + username + "_replies.csv")
 
     # Declare variables for scores
     compound_list = []
@@ -89,13 +90,32 @@ def calculate_vader_score(username, category):
 
     # Dropping rows that aren't calculated well by vader
     for i, row in df.iterrows():
-        if(row["Neutral"]==1.0):
-            df.drop(i,inplace=True)
+        if (row["Neutral"] == 1.0):
+            df.drop(i, inplace=True)
     # Adding an index column
     id = range(1, len(df) + 1)
-    df.insert(0,"ID",id)
+    df.insert(0, "ID", id)
 
-    df.to_csv("./"+category+"/"+username+"_replies.csv",sep=',',index=False)
+    df.to_csv("./" + category + "/" + username + "_replies.csv", sep=',', index=False)
+
+
+def calculate_score(username, category):
+    df = pd.read_csv("./" + category + "/" + username + "_replies.csv")
+    rate = df[{"Positive", "Negative"}]
+    positive_rate = df["Positive"]
+    negative_rate = df["Negative"]
+    pos_comment = 0
+    neg_comment = 0
+    for positive in positive_rate:
+        for negative in negative_rate:
+            if negative > positive:
+                pos_comment += 1
+            else:
+                neg_comment += 1
+
+    print(rate)
+    print((pos_comment/len(df))/len(df) * 100)
+    print((neg_comment/len(df)/len(df)) * 100)
 
 
 if __name__ == '__main__':
@@ -105,4 +125,4 @@ if __name__ == '__main__':
     get_replies(username, category)
     csv_cleaning(username, category)
     calculate_vader_score(username, category)
-
+    calculate_score(username, category)
