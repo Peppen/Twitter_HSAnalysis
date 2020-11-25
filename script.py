@@ -1,5 +1,3 @@
-from hatesonar import Sonar
-
 from twarc import Twarc
 import csv
 import re
@@ -8,8 +6,6 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from hatesonar.api import Sonar
 
 t = Twarc("", "", "", "")
-rateFile = "rates.csv"
-
 
 
 # Function that create the .csv of replies
@@ -38,7 +34,7 @@ def csv_cleaning(username, category):
 
     space_pattern = '\s+'
 
-    #Reply cleaning
+    # Reply cleaning
     for i, row in df.iterrows():
         row["Reply"] = re.sub(r"https?://[A-Za-z0-9./]*", '', row["Reply"])
         row["Reply"] = re.sub(r"@[\w]*", '', row["Reply"])
@@ -73,11 +69,6 @@ def calculate_vader_score(username, category):
     vader_score = []
     df = pd.read_csv("./" + category + "/" + username + "_replies.csv")
 
-    # Declare variables for scores
-    positive_list = []
-    negative_list = []
-    neutral_list = []
-
     # Calculating vader score for each reply
     for i in range(df['Reply'].shape[0]):
         # print(analyser.polarity_scores(sentiments_pd['text'][i]))
@@ -85,9 +76,9 @@ def calculate_vader_score(username, category):
         neu = analyser.polarity_scores(df['Reply'][i])["neu"]
         neg = analyser.polarity_scores(df['Reply'][i])["neg"]
 
-        vader_score.append({"Positive": round(pos,3),
-                            "Negative": round(neg,3),
-                            "Neutral": round(neu,3)
+        vader_score.append({"Positive": round(pos, 2),
+                            "Negative": round(neg, 2),
+                            "Neutral": round(neu, 2)
                             })
 
     # Adding vader scores as columns to .csv file
@@ -104,27 +95,25 @@ def calculate_vader_score(username, category):
 
     df.to_csv("./" + category + "/" + username + "_replies.csv", sep=',', index=False)
 
+
 # Function to calculate hate speech score and append to the .csv
-def calculate_hatespeech_score(username,category):
+def calculate_hatespeech_score(username, category):
     sonar = Sonar()
     hatespeech_score = []
-    hate = []
-    neither = []
-    offensive = []
 
     df = pd.read_csv("./" + category + "/" + username + "_replies.csv")
     for i in range(df['Reply'].shape[0]):
         score = sonar.ping(df['Reply'][i])
         print(score)
-        hate = score["classes"][0]["confidence"].round(3)
-        offensive = score["classes"][1]["confidence"].round(3)
-        neither = score["classes"][2]["confidence"].round(3)
+        hate = round(score["classes"][0]["confidence"],2)
+        offensive = round(score["classes"][1]["confidence"],2)
+        neither = round(score["classes"][2]["confidence"],2)
 
         hatespeech_score.append({
-                            "Hate": hate,
-                            "Offensive": offensive,
-                            "Neither": neither
-                            })
+            "Hate": hate,
+            "Offensive": offensive,
+            "Neither": neither
+        })
 
     hate_score = pd.DataFrame.from_dict(hatespeech_score)
     df = df.join(hate_score)
@@ -132,40 +121,57 @@ def calculate_hatespeech_score(username,category):
     df.to_csv("./" + category + "/" + username + "_replies.csv", sep=',', index=False)
 
 
-
-
-
-#Function that creates a .csv file containing for each user the average scores obtained
+# Function that creates a .csv file containing for each user the average scores obtained
 def create_score_csv(username, category):
     df = pd.read_csv("./" + category + "/" + username + "_replies.csv")
-    rates = [["Name", "Category", "Positive", "Negative", "Hate", "Offensive", "Neither"]]
+    rates = []
     positive_rate = df["Positive"]
     negative_rate = df["Negative"]
+    hatespeech_rate = df["Hate"]
+    offensive_rate = df["Offensive"]
+    neither_rate = df["Neither"]
+
+
     pos_comments = 0
     neg_comments = 0
+    hatespeech_sum = 0
+    offensive_sum = 0
+    neither_sum = 0
+
+    # Rate of hatespeech
+    for hatespeech in hatespeech_rate:
+        hatespeech_sum += hatespeech
+
+    # Rate of offensive comments
+    for offensive_comments in offensive_rate:
+        offensive_sum += offensive_comments
+
+    # Missing rate
+    for neither in neither_rate:
+        neither_sum += neither
+
+    # Rate of positive or negative comment
     for positive in positive_rate:
         for negative in negative_rate:
             if negative > positive:
                 neg_comments += 1
             else:
                 pos_comments += 1
-    rates.append([username, category, round(pos_comments / len(df) / len(df) * 100, 2),
-                  round(neg_comments / len(df) / len(df) * 100, 2)])
+    rates.append(["Positive Rate: " + str(round(pos_comments/len(df)/len(df)*100, 2)) + "%",
+                  " Negative Rate: " + str(round(neg_comments/len(df)/len(df)*100, 2)) + "%", " Hate Speech Rate: " + str(round(hatespeech_sum/len(df) * 100, 3)) + "%", " Offensive Rate: " + str(round(offensive_sum/len(df) * 100, 3)) + "%", " Neither Rate: " + str(round(neither_sum/len(df) * 100, 3)) + "%"])
 
-    print("writing to " + rateFile)
-    with open(rateFile, 'a', newline='') as file:
+    print("writing to " + "./" + category + "/" + username + "_replies.csv")
+    with open("./" + category + "/" + username + "_replies.csv", 'a', newline='') as file:
         writer = csv.writer(file, delimiter=',')
         writer.writerows(rates)
-
 
 
 if __name__ == '__main__':
     # Fornisco l'username e categoria
     username = "skysportsnews"
     category = "Giornalismo"
-    #get_replies(username, category)
-    #csv_cleaning(username, category)
-    #calculate_vader_score(username, category)
-    #calculate_hatespeech_score(username,category)
+    get_replies(username, category)
+    csv_cleaning(username, category)
+    calculate_vader_score(username, category)
+    calculate_hatespeech_score(username, category)
     create_score_csv(username, category)
-
