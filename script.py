@@ -4,9 +4,10 @@ import re
 import pandas as pd
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from hatesonar.api import Sonar
+import os.path
 
 t = Twarc("", "", "", "")
-rateFile = "rates.csv"
+#rateFile = "rates.csv"
 
 # Function that create the .csv of replies
 def get_replies(username, category):
@@ -104,7 +105,6 @@ def calculate_hatespeech_score(username, category):
     df = pd.read_csv("./" + category + "/" + username + "_replies.csv")
     for i in range(df['Reply'].shape[0]):
         score = sonar.ping(df['Reply'][i])
-        print(score)
         hate = round(score["classes"][0]["confidence"],2)
         offensive = round(score["classes"][1]["confidence"],2)
         neither = round(score["classes"][2]["confidence"],2)
@@ -120,51 +120,49 @@ def calculate_hatespeech_score(username, category):
 
     df.to_csv("./" + category + "/" + username + "_replies.csv", sep=',', index=False)
 
-
 # Function that creates a .csv file containing for each user the average scores obtained
 def create_score_csv(username, category):
-    df = pd.read_csv("./" + category + "/" + username + "_replies.csv")
-    rates = []
-    positive_rate = df["Positive"]
-    negative_rate = df["Negative"]
-    hatespeech_rate = df["Hate"]
-    offensive_rate = df["Offensive"]
-    neither_rate = df["Neither"]
-
-
-    pos_comments = 0
-    neg_comments = 0
+    df = pd.read_csv("./"+category+"/"+username+"_replies.csv")
+    pos_sum = 0
+    neg_sum = 0
+    neut_sum = 0
     hatespeech_sum = 0
     offensive_sum = 0
     neither_sum = 0
+    rates = []
 
-    # Rate of hatespeech
-    for hatespeech in hatespeech_rate:
-        hatespeech_sum += hatespeech
 
-    # Rate of offensive comments
-    for offensive_comments in offensive_rate:
-        offensive_sum += offensive_comments
 
-    # Missing rate
-    for neither in neither_rate:
-        neither_sum += neither
+    for i,row in df.iterrows():
+        pos_sum += row["Positive"]
+        neg_sum += row["Negative"]
+        neut_sum += row["Neutral"]
+        hatespeech_sum += row["Hate"]
+        offensive_sum += row["Offensive"]
+        neither_sum += row["Neither"]
 
-    # Rate of positive or negative comment
-    for positive in positive_rate:
-        for negative in negative_rate:
-            if negative > positive:
-                neg_comments += 1
-            else:
-                pos_comments += 1
-    rates.append([username, category, "Positive Rate: " + str(round(pos_comments/len(df)/len(df)*100, 2)) + "%",
-                  " Negative Rate: " + str(round(neg_comments/len(df)/len(df)*100, 2)) + "%", " Hate Speech Rate: " + str(round(hatespeech_sum/len(df) * 100, 3)) + "%", " Offensive Rate: " + str(round(offensive_sum/len(df) * 100, 3)) + "%", " Neither Rate: " + str(round(neither_sum/len(df) * 100, 3)) + "%"])
+    pos_sum = str(round((pos_sum / len(df.index))*100,2))
+    neg_sum = str(round((neg_sum / len(df.index))*100,2))
+    neut_sum = str(round((neut_sum / len(df.index))*100,2))
+    hatespeech_sum = str(round((hatespeech_sum / len(df.index))*100,2))
+    offensive_sum = str(round((offensive_sum / len(df.index))*100,2))
+    neither_sum = str(round((neither_sum / len(df.index))*100,2))
 
-    print("writing to " + rateFile)
-    with open(rateFile, 'a', newline='') as file:
-        writer = csv.writer(file, delimiter=',')
-        writer.writerows(rates)
 
+    rateFile = "./"+category+"/"+username+"_rates.csv"
+
+
+    if(os.path.isfile(rateFile)):
+        rates.append([username, category, pos_sum, neg_sum, neut_sum, hatespeech_sum, offensive_sum, neither_sum])
+        with open(rateFile, 'a', newline='') as file:
+            writer = csv.writer(file, delimiter=',')
+            writer.writerows(rates)
+    else:
+        rates = [["Username","Category","Positive Rate","Negative Rate","Neutral Rate","Hate Rate","Offensive rate", "Neither rate"]]
+        rates.append([username, category, pos_sum, neg_sum, neut_sum, hatespeech_sum, offensive_sum, neither_sum])
+        with open(rateFile, 'w', newline='') as file:
+            writer = csv.writer(file, delimiter=',')
+            writer.writerows(rates)
 
 if __name__ == '__main__':
     # Fornisco l'username e categoria
