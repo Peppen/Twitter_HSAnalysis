@@ -6,7 +6,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from hatesonar.api import Sonar
 
 t = Twarc("", "", "", "")
-
+rateFile = "rates.csv"
 
 # Function that create the .csv of replies
 def get_replies(username, category):
@@ -157,11 +157,11 @@ def create_score_csv(username, category):
                 neg_comments += 1
             else:
                 pos_comments += 1
-    rates.append(["Positive Rate: " + str(round(pos_comments/len(df)/len(df)*100, 2)) + "%",
+    rates.append([username, category, "Positive Rate: " + str(round(pos_comments/len(df)/len(df)*100, 2)) + "%",
                   " Negative Rate: " + str(round(neg_comments/len(df)/len(df)*100, 2)) + "%", " Hate Speech Rate: " + str(round(hatespeech_sum/len(df) * 100, 3)) + "%", " Offensive Rate: " + str(round(offensive_sum/len(df) * 100, 3)) + "%", " Neither Rate: " + str(round(neither_sum/len(df) * 100, 3)) + "%"])
 
-    print("writing to " + "./" + category + "/" + username + "_replies.csv")
-    with open("./" + category + "/" + username + "_replies.csv", 'a', newline='') as file:
+    print("writing to " + rateFile)
+    with open(rateFile, 'a', newline='') as file:
         writer = csv.writer(file, delimiter=',')
         writer.writerows(rates)
 
