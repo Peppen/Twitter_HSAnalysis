@@ -1,12 +1,13 @@
 Categorie scelte:
-	- politici: Trump, Biden, Boris Johnson, https://twitter.com/ClarenceHouse (Regina Elisabetta), Obama
-	- influencer: The Rock, Ariana Grande, Harry Styles, Nicki Minaj, Taylor Swift
-	- giornalismo: France 24 English , Guardian News, RT, The Independent, CBC news
-	- pagine dello sport: BBC sport, Sky Sports News, Uefa Champions League, Los Angeles Lakers, England football team
+	- politici: Trump (x), Biden(x), Boris Johnson(x), Obama, Michelle Obama, Greta Thunberg
+	- influencer: The Rock, Ariana Grande, Nicki Minaj
+	- Sportivi: Lewis Hamilton, Shaquille O'Neal, Lebron James, Marcus Rashford
+	- giornalismo: France 24 English , Guardian News, RT, The Independent, CBC news, Sky Sports News (x)
+	- pagine dello sport: BBC sport, Uefa Champions League, Los Angeles Lakers, England football team
 	- pagine a carattere scientifico: Wired Science, CERN, Nature News, New Scientist, Reuters Science
 	- youtuber: Casey Neistat,  Gary Vaynerchuk, Ellen, https://twitter.com/dantdm, ninja
-	- attori: Samuel Jackson, Kevin Hart, Chris Pratt, Channing Tatum, schwarzenegger
+	- attori: Samuel Jackson, Kevin Hart, Chris Pratt, Channing Tatum
 
-Carmine: Politici + Influencer + France 24 English + Guardian News
-Peppe: RT + The Independent + CBC news + Pagine dello sport + Wired Science + CERN + Nature News
-Silvio: New Scientist + Reuters Science + Youtuber + Attori 
+Carmine: Giornalismo + Pagine dello sport + Samuel Jackson + Kevin Hart
+Peppe: Pagine a carattere scientifico + Youtuber + Chris Pratt + Channing Tatum
+Silvio: Politici + Influencer + Sportivi

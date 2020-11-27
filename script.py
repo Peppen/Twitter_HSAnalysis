@@ -166,8 +166,8 @@ def create_score_csv(username, category):
 
 if __name__ == '__main__':
     # Fornisco l'username e categoria
-    username = "skysportsnews"
-    category = "Giornalismo"
+    username = "barackobama"
+    category = "Politici"
     get_replies(username, category)
     csv_cleaning(username, category)
     calculate_vader_score(username, category)
