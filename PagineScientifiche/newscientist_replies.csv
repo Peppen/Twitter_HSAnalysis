@@ -1,0 +1,83 @@
+ID,Username,Data,Reply,Positive,Negative,Neutral,Hate,Offensive,Neither
+1,newscientist,Sat Nov 28 14:56:23 +0000 2020,' people cold and hungry. why the effen nukes? its not like they could ever use them. at least not for defense',0.0,0.15,0.85,0.03,0.37,0.61
+2,newscientist,Sat Nov 28 14:55:57 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+3,newscientist,Sat Nov 28 14:55:37 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+4,newscientist,Sat Nov 28 14:54:28 +0000 2020,' google earth reveals suspected nuclear weapons facility in pakistan ',0.0,0.35,0.65,0.04,0.33,0.63
+5,newscientist,Sat Nov 28 14:54:04 +0000 2020,' good grief.',0.41,0.45,0.14,0.04,0.33,0.63
+6,newscientist,Sat Nov 28 14:54:01 +0000 2020,"'#futureag includes also underground drones, as founder lorenzo conti defines his mobile robotic scouting platform being able to dive into grain silos (and many more media). #livenow at future of food and agriculture session promoted by '",0.07,0.0,0.93,0.05,0.34,0.61
+7,newscientist,Sat Nov 28 14:53:29 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+8,newscientist,Sat Nov 28 14:52:05 +0000 2020,' google earth reveals suspected nuclear weapons facility in pakistan \n\n#nuclear #proliferation',0.0,0.32,0.68,0.04,0.33,0.63
+9,newscientist,Sat Nov 28 14:51:58 +0000 2020,' google earth reveals suspected nuclear weapons facility in pakistan ',0.0,0.35,0.65,0.04,0.33,0.63
+10,newscientist,Sat Nov 28 14:51:57 +0000 2020,' double climate disaster may have ended the harappan phase. \n\n',0.0,0.29,0.71,0.04,0.31,0.65
+11,newscientist,Sat Nov 28 14:51:14 +0000 2020,' surreal californian oilscape wins climate change photography award ',0.47,0.0,0.53,0.04,0.33,0.63
+12,newscientist,Sat Nov 28 14:50:04 +0000 2020,' surreal californian oilscape wins climate change photography award ',0.47,0.0,0.53,0.04,0.33,0.63
+13,newscientist,Sat Nov 28 14:49:54 +0000 2020,' surreal californian oilscape wins climate change photography award ',0.47,0.0,0.53,0.04,0.33,0.63
+14,newscientist,Sat Nov 28 14:49:39 +0000 2020,"' ""windfarms are really ugly"" '",0.0,0.42,0.58,0.36,0.05,0.59
+15,newscientist,Sat Nov 28 14:49:10 +0000 2020,' future of food and agriculture - fork stage\n\never wondered what the future of seafood will look like and how we can make',0.1,0.0,0.9,0.04,0.3,0.66
+16,newscientist,Sat Nov 28 14:48:50 +0000 2020,' google earth reveals suspected nuclear weapons facility in pakistan ',0.0,0.35,0.65,0.04,0.33,0.63
+17,newscientist,Sat Nov 28 14:47:29 +0000 2020,' surreal californian oilscape wins climate change photography award ',0.47,0.0,0.53,0.04,0.33,0.63
+18,newscientist,Sat Nov 28 14:45:24 +0000 2020,""" crispr gene editing of brain cells might prevent alzheimer's disease """,0.09,0.0,0.91,0.04,0.33,0.63
+19,newscientist,Sat Nov 28 14:44:50 +0000 2020,'google earth reveals suspected nuclear weapons facility in pakistan\n\nread more: ',0.0,0.35,0.65,0.04,0.33,0.63
+20,newscientist,Sat Nov 28 14:44:22 +0000 2020,"' jill lepore\'s book ""if then"" touches upon the origin of the matrix. fascinating read. i reviewed it recently .. """"'",0.15,0.0,0.85,0.03,0.34,0.63
+21,newscientist,Sat Nov 28 14:43:23 +0000 2020,""" crispr gene editing of brain cells might prevent alzheimer's disease """,0.09,0.0,0.91,0.04,0.33,0.63
+22,newscientist,Sat Nov 28 14:43:17 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+23,newscientist,Sat Nov 28 14:43:10 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+24,newscientist,Sat Nov 28 14:43:08 +0000 2020,' nuclear weapon for humans or aliens?',0.0,0.27,0.73,0.04,0.31,0.66
+25,newscientist,Sat Nov 28 14:42:42 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+26,newscientist,Sat Nov 28 14:42:21 +0000 2020,'surreal californian oilscape wins climate change photography award #photography #photo via ',0.42,0.0,0.58,0.04,0.21,0.74
+27,newscientist,Sat Nov 28 14:39:45 +0000 2020,"'this is weird for me. its like... theres a lot that i dont expect from twitter and get surprised by it, of course. \n\nthis just feels like outright fucking war moves. wtf did pakistan do to get called out like this? '",0.17,0.18,0.64,0.08,0.83,0.09
+28,newscientist,Sat Nov 28 14:38:52 +0000 2020,' google earth reveals suspected nuclear weapons facility in pakistan ',0.0,0.35,0.65,0.04,0.33,0.63
+29,newscientist,Sat Nov 28 14:38:40 +0000 2020,""" crispr gene editing of brain cells might prevent alzheimer's disease """,0.09,0.0,0.91,0.04,0.33,0.63
+30,newscientist,Sat Nov 28 14:38:20 +0000 2020,'we are excited to see andy again take on stage in #nslfoodag hosted on konf!\n ',0.15,0.0,0.85,0.05,0.34,0.61
+31,newscientist,Sat Nov 28 14:37:03 +0000 2020,' suspected pakistan is a nuclear power country that even not an open secret',0.0,0.13,0.87,0.04,0.36,0.59
+32,newscientist,Sat Nov 28 14:37:00 +0000 2020,'meat-free diets linked with greater risk of breaking bones ',0.2,0.17,0.64,0.03,0.35,0.62
+33,newscientist,Sat Nov 28 14:35:58 +0000 2020,""" crispr gene editing of brain cells might prevent alzheimer's disease """,0.09,0.0,0.91,0.04,0.33,0.63
+34,newscientist,Sat Nov 28 14:35:51 +0000 2020,'very well produced event today by 3 stages and some great speakers.\nwell done for sponsorship. ',0.32,0.0,0.68,0.03,0.31,0.66
+35,newscientist,Sat Nov 28 14:35:31 +0000 2020,"' that is incorrect. you can actually watch the electron cloud using a quantum microscope. and since we know its properties, with certainty, there is no doubts about the electron travel in electricity.\n\n'",0.11,0.0,0.89,0.04,0.37,0.59
+36,newscientist,Sat Nov 28 14:35:14 +0000 2020,' the race to find and stop viruses that could cause the next pandemic ',0.0,0.14,0.86,0.24,0.08,0.68
+37,newscientist,Sat Nov 28 14:35:13 +0000 2020,' surreal californian oilscape wins climate change photography award ',0.47,0.0,0.53,0.04,0.33,0.63
+38,newscientist,Sat Nov 28 14:34:17 +0000 2020,' the race to find and stop viruses that could cause the next pandemic ',0.0,0.14,0.86,0.24,0.08,0.68
+39,newscientist,Sat Nov 28 14:33:12 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+40,newscientist,Sat Nov 28 14:32:54 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+41,newscientist,Sat Nov 28 14:32:25 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+42,newscientist,Sat Nov 28 14:31:46 +0000 2020,' google earth reveals suspected nuclear weapons facility in pakistan ',0.0,0.35,0.65,0.04,0.33,0.63
+43,newscientist,Sat Nov 28 14:31:30 +0000 2020,"""future of food and agriculture - fork stage\n\never wondered what the future of seafood will look like and how we can make it sustainable? join david willer at 2:55pm (gmt) as he discusses just that!\n\ndon't miss out: """,0.15,0.0,0.84,0.04,0.35,0.61
+44,newscientist,Sat Nov 28 14:31:03 +0000 2020,"'#gastrophysics opens reflections about our behaviour towards newly engineered food. interesting thoughts by charles spence, psychologist at event #livenow\n\n#my2c food takes time to be produced by farmers: we owe them the proper time to eat and savour it '",0.07,0.0,0.93,0.05,0.36,0.59
+45,newscientist,Sat Nov 28 14:29:18 +0000 2020,""" i'm glad to see britain's foreign aid is going to a worthwhile project""",0.31,0.0,0.69,0.05,0.34,0.61
+46,newscientist,Sat Nov 28 14:29:12 +0000 2020,' some male spiders tie up females before mating to avoid being eaten ',0.0,0.14,0.85,0.03,0.48,0.49
+47,newscientist,Sat Nov 28 14:29:08 +0000 2020,' the race to find and stop viruses that could cause the next pandemic ',0.0,0.14,0.86,0.24,0.08,0.68
+48,newscientist,Sat Nov 28 14:28:12 +0000 2020,'google earth reveals suspected nuclear weapons facility in pakistan ',0.0,0.38,0.62,0.04,0.33,0.63
+49,newscientist,Sat Nov 28 14:27:04 +0000 2020,' meat-free diets linked with greater risk of breaking bones ',0.18,0.15,0.66,0.03,0.35,0.62
+50,newscientist,Sat Nov 28 14:25:03 +0000 2020,'new scientist covers the latest developments in science and technology that will impact your world. \n\nsimply download the #rbdigital app and sign up with your library card number to start reading #newscientist today.\n\n\n\n#librariesfromhome ',0.04,0.0,0.96,0.05,0.28,0.66
+51,newscientist,Sat Nov 28 14:25:03 +0000 2020,'breaking: a country known to have nuclear weapons since 1998 has a nuclear weapons facility :o ',0.0,0.34,0.66,0.05,0.33,0.63
+52,newscientist,Sat Nov 28 14:25:00 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+53,newscientist,Sat Nov 28 14:23:46 +0000 2020,' google earth reveals suspected nuclear weapons facility in pakistan \n\n#nuclear #proliferation',0.0,0.32,0.68,0.04,0.33,0.63
+54,newscientist,Sat Nov 28 14:23:18 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+55,newscientist,Sat Nov 28 14:23:09 +0000 2020,' compassion. smiling with you. ',0.6,0.0,0.4,0.04,0.4,0.55
+56,newscientist,Sat Nov 28 14:22:09 +0000 2020,"""over on the room they're talking about tracking dairy calves and how this information can be used to better farming practices \n\ncheck it out: #nslfoodag """,0.1,0.0,0.9,0.04,0.32,0.64
+57,newscientist,Sat Nov 28 14:22:07 +0000 2020,' can a law meant to protect native american artefacts free an orca? ',0.33,0.0,0.67,0.05,0.29,0.67
+58,newscientist,Sat Nov 28 14:22:04 +0000 2020,' google earth reveals suspected nuclear weapons facility in pakistan ',0.0,0.35,0.65,0.04,0.33,0.63
+59,newscientist,Sat Nov 28 14:21:57 +0000 2020,"'nothing more beautiful than a californian oilscape, right??? and we give them around 20 billions a year in taxes to do this!!!\n#climate '",0.0,0.18,0.82,0.05,0.34,0.62
+60,newscientist,Sat Nov 28 14:19:54 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+61,newscientist,Sat Nov 28 14:18:48 +0000 2020,"'okay. science friends of twitter. take note.\n\nthis is an example of a bad choice in using log scale. yes, it is easier to parse countries with low mortality rates this way, but man those high values are extremely misleading / crunched together. '",0.2,0.14,0.65,0.05,0.4,0.54
+62,newscientist,Sat Nov 28 14:17:55 +0000 2020,'log scales are dangerous ways to communicate things clearly. ',0.2,0.23,0.58,0.06,0.3,0.64
+63,newscientist,Sat Nov 28 14:17:41 +0000 2020,' the race to find and stop viruses that could cause the next pandemic ',0.0,0.14,0.86,0.24,0.08,0.68
+64,newscientist,Sat Nov 28 14:16:46 +0000 2020,' the race to find and stop viruses that could cause the next pandemic ',0.0,0.14,0.86,0.24,0.08,0.68
+65,newscientist,Sat Nov 28 14:16:38 +0000 2020,' double climate disaster may have ended the harappan phase. \n\n',0.0,0.29,0.71,0.04,0.31,0.65
+66,newscientist,Sat Nov 28 14:16:07 +0000 2020,' surreal californian oilscape wins climate change photography award ',0.47,0.0,0.53,0.04,0.33,0.63
+67,newscientist,Sat Nov 28 14:16:06 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+68,newscientist,Sat Nov 28 14:13:32 +0000 2020,' the race to find and stop viruses that could cause the next pandemic ',0.0,0.14,0.86,0.24,0.08,0.68
+69,newscientist,Sat Nov 28 14:13:26 +0000 2020,' this is not a failed study into research integrity. it is the important finding. ',0.35,0.0,0.65,0.05,0.32,0.63
+70,newscientist,Sat Nov 28 14:13:21 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+71,newscientist,Sat Nov 28 14:13:15 +0000 2020,' double climate disaster may have ended the harappan phase. \n\n',0.0,0.29,0.71,0.04,0.31,0.65
+72,newscientist,Sat Nov 28 14:13:05 +0000 2020,' google earth reveals suspected nuclear weapons facility in pakistan ',0.0,0.35,0.65,0.04,0.33,0.63
+73,newscientist,Sat Nov 28 14:13:00 +0000 2020,' surreal californian oilscape wins climate change photography award ',0.47,0.0,0.53,0.04,0.33,0.63
+74,newscientist,Sat Nov 28 14:12:30 +0000 2020,'and there worried about lithium extraction from brine. ',0.0,0.22,0.78,0.04,0.26,0.71
+75,newscientist,Sat Nov 28 14:12:30 +0000 2020,' google earth reveals suspected nuclear weapons facility in pakistan ',0.0,0.35,0.65,0.04,0.33,0.63
+76,newscientist,Sat Nov 28 14:12:21 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+77,newscientist,Sat Nov 28 14:11:09 +0000 2020,' strong opinion: there are very very few cases where log scales should be used in communicating data to the general public.',0.14,0.0,0.86,0.06,0.29,0.65
+78,newscientist,Sat Nov 28 14:10:17 +0000 2020,'kewl ',0.7,0.0,0.3,0.04,0.33,0.63
+79,newscientist,Sat Nov 28 14:08:26 +0000 2020,' talking about healthy plants in the 21st century ',0.23,0.0,0.77,0.04,0.34,0.63
+80,newscientist,Sat Nov 28 14:07:53 +0000 2020,' surreal californian oilscape wins climate change photography award ',0.47,0.0,0.53,0.04,0.33,0.63
+81,newscientist,Sat Nov 28 14:07:06 +0000 2020,'wtf ',0.0,0.79,0.21,0.04,0.79,0.17
+82,newscientist,Sat Nov 28 14:07:01 +0000 2020,' double climate disaster may have ended the harappan phase. \n\n',0.0,0.29,0.71,0.04,0.31,0.65

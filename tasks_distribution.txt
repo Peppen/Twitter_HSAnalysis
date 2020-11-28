@@ -4,9 +4,9 @@ Categorie scelte:
 	- Sportivi: Lewis Hamilton, Shaquille O'Neal, Lebron James, Marcus Rashford
 	- giornalismo: France 24 English , Guardian News, RT, The Independent, CBC news, Sky Sports News (x)
 	- pagine dello sport: BBC sport, Uefa Champions League, Los Angeles Lakers, England football team
-	- pagine a carattere scientifico: Wired Science, CERN, Nature News, New Scientist, Reuters Science
-	- youtuber: Casey Neistat,  Gary Vaynerchuk, Ellen, https://twitter.com/dantdm, ninja
-	- attori: Samuel Jackson, Kevin Hart, Chris Pratt, Channing Tatum
+	- pagine a carattere scientifico: Wired Science(x), CERN(x), Nature News(x), New Scientist(x), National Geographic(x)
+	- youtuber: Casey Neistat(x), Gary Vaynerchuk(x), Ellen(x), dantdm(x), ninja(x)
+	- attori: Samuel Jackson, Kevin Hart, Chris Pratt(x), Channing Tatum(x)
 
 Carmine: Giornalismo + Pagine dello sport + Samuel Jackson + Kevin Hart
 Peppe: Pagine a carattere scientifico + Youtuber + Chris Pratt + Channing Tatum
