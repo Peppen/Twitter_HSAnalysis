@@ -1,8 +1,8 @@
 Categorie scelte:
-	- politici: Trump (x), Biden(x), Boris Johnson(x), Obama, Michelle Obama, Greta Thunberg
-	- influencer: The Rock, Ariana Grande, Nicki Minaj
-	- Sportivi: Lewis Hamilton, Shaquille O'Neal, Lebron James, Marcus Rashford
-	- giornalismo: France 24 English , Guardian News, RT, The Independent, CBC news, Sky Sports News (x)
+	- politici: Trump(x), Biden(x), Boris Johnson(x), Obama(x), Michelle Obama(x), Greta Thunberg(x)
+	- influencer: The Rock(x), Ariana Grande(x), Nicki Minaj(x)
+	- Sportivi: Lewis Hamilton(x), Shaquille O'Neal(x), Lebron James(x), Marcus Rashford(x)
+	- giornalismo: France 24 English , Guardian News, RT, The Independent, CBC news, Sky Sports News(x)
 	- pagine dello sport: BBC sport, Uefa Champions League, Los Angeles Lakers, England football team
 	- pagine a carattere scientifico: Wired Science(x), CERN(x), Nature News(x), New Scientist(x), National Geographic(x)
 	- youtuber: Casey Neistat(x), Gary Vaynerchuk(x), Ellen(x), dantdm(x), ninja(x)
