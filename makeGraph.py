@@ -33,16 +33,26 @@ def calculateAvarage(category):
             offensive_sum = str(round((offensive_sum / 5), 2))
             neither_sum = str(round((neither_sum / 5), 2))
 
-            rates.append([username, category, pos_sum, neg_sum, neut_sum, hatespeech_sum, offensive_sum, neither_sum])
-            with open(f, 'a', newline='') as file:
-                writer = csv.writer(file, delimiter=',')
-                writer.writerows(rates)
+            rateFile = "./" + category + "_average.csv"
+
+            if os.path.isfile(rateFile):
+                rates.append(
+                    [username, category, pos_sum, neg_sum, neut_sum, hatespeech_sum, offensive_sum, neither_sum])
+                with open(rateFile, 'a', newline='') as file:
+                    writer = csv.writer(file, delimiter=',')
+                    writer.writerows(rates)
+            else:
+                rates=[["Username", "Category", "Positive Rate", "Negative Rate", "Neutral Rate", "Hate Rate","Offensive rate", "Neither rate"]]
+                rates.append([username, category, pos_sum, neg_sum, neut_sum, hatespeech_sum, offensive_sum, neither_sum])
+                with open(rateFile, 'w', newline='') as file:
+                    writer = csv.writer(file, delimiter=',')
+                    writer.writerows(rates)
 
 
-def makePositiveNegativeRate():
+def makePositiveNegativeRate(category):
     os.chdir("C:\\Users\\peppe\\PycharmProjects\\Twitter_HSAnalysis\\" + category)
     for f in os.listdir():
-        if f.endswith("_rates.csv"):
+        if f.endswith("_average.csv"):
             df = pd.read_csv(f)
             positive_rate = df["Positive Rate"]
             negative_rate = df["Negative Rate"]
@@ -53,14 +63,13 @@ def makePositiveNegativeRate():
             plt.plot(positive_rate)
             plt.plot(negative_rate)
             plt.plot(neutral_rate)
-            plt.union()
             plt.show()
 
 
-def makeHateOffensiveGraph():
+def makeHateOffensiveGraph(category):
     os.chdir("C:\\Users\\peppe\\PycharmProjects\\Twitter_HSAnalysis\\" + category)
     for f in os.listdir():
-        if f.endswith("_rates.csv"):
+        if f.endswith("_average.csv"):
             df = pd.read_csv(f)
             hate_rate = df["Hate Rate"]
             offensive_rate = df["Offensive rate"]
