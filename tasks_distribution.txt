@@ -2,11 +2,11 @@ Categorie scelte:
 	- politici: Trump(x), Biden(x), Boris Johnson(x), Obama(x), Michelle Obama(x), Greta Thunberg(x)
 	- influencer: The Rock(x), Ariana Grande(x), Nicki Minaj(x)
 	- Sportivi: Lewis Hamilton(x), Shaquille O'Neal(x), Lebron James(x), Marcus Rashford(x)
-	- giornalismo: France 24 English , Guardian News, RT, The Independent, CBC news, Sky Sports News(x)
-	- pagine dello sport: BBC sport, Uefa Champions League, Los Angeles Lakers, England football team
+	- giornalismo: France 24 English (x), Guardian News (x), The Times (x), The Independent (x), CBC news (x), Sky Sports News(x)
+	- pagine dello sport: BBC sport (x), Uefa Champions League (x), Los Angeles Lakers (x), England football team (x)
 	- pagine a carattere scientifico: Wired Science(x), CERN(x), Nature News(x), New Scientist(x), National Geographic(x)
 	- youtuber: Casey Neistat(x), Gary Vaynerchuk(x), Ellen(x), dantdm(x), ninja(x)
-	- attori: Samuel Jackson, Kevin Hart, Chris Pratt(x), Channing Tatum(x)
+	- attori: Samuel Jackson (x), Kevin Hart (x), Chris Pratt(x), Channing Tatum(x)
 
 Carmine: Giornalismo + Pagine dello sport + Samuel Jackson + Kevin Hart
 Peppe: Pagine a carattere scientifico + Youtuber + Chris Pratt + Channing Tatum
