@@ -5,7 +5,7 @@ import pandas as pd
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from hatesonar.api import Sonar
 import os.path
-import makeGraph as gr
+import make_graph as gr
 
 t = Twarc("", "", "", "")
 #rateFile = "rates.csv"
