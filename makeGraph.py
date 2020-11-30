@@ -8,7 +8,7 @@ import numpy as np
 
 
 #Calculate average for each user of the category taken by argument
-def userAverage(category):
+def user_average(category):
     os.chdir("./" + category)
     for f in os.listdir():
         if f.endswith("_rates.csv"):
@@ -54,7 +54,7 @@ def userAverage(category):
 
 
 #Save vader graph of the category taken by input
-def vaderGraph(category):
+def vader_graph(category):
     os.chdir("./" + category)
     for f in os.listdir():
         if f.endswith("_average.csv"):
@@ -86,7 +86,7 @@ def vaderGraph(category):
 
 
 #Save sonar graph of the category taken by input
-def sonarGraph(category):
+def sonar_graph(category):
     os.chdir("./" +category)
     for f in os.listdir():
         if f.endswith("_average.csv"):
