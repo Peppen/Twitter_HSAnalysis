@@ -1,0 +1,6 @@
+Username,Category,Positive Rate,Negative Rate,Neutral Rate,Hate Rate,Offensive rate,Neither rate
+CERN,PagineScientifiche,13.53,6.2,80.28,5.16,36.3,58.46
+NatGeo,PagineScientifiche,12.54,5.1,82.49,5.06,33.21,62.02
+NatureNews,PagineScientifiche,14.12,6.51,79.4,4.7,33.26,62.02
+newscientist,PagineScientifiche,14.24,10.92,74.79,7.48,29.73,62.81
+WIREDScience,PagineScientifiche,13.89,3.68,82.52,5.08,33.24,61.57

@@ -1,0 +1,5 @@
+Username,Category,Positive Rate,Negative Rate,Neutral Rate,Hate Rate,Offensive rate,Neither rate
+BBCSport,PagineDelloSport,14.46,11.02,74.5,4.64,36.99,58.35
+ChampionsLeague,PagineDelloSport,25.09,8.18,66.62,3.94,34.91,61.22
+England,PagineDelloSport,11.93,10.71,77.37,4.82,33.14,62.16
+Lakers,PagineDelloSport,17.06,5.47,77.5,5.0,36.72,58.35
