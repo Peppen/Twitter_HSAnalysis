@@ -5,6 +5,7 @@ import pandas as pd
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from hatesonar.api import Sonar
 import os.path
+import makeGraph as gr
 
 t = Twarc("", "", "", "")
 #rateFile = "rates.csv"
@@ -168,8 +169,11 @@ if __name__ == '__main__':
     # Fornisco l'username e categoria
     username = "MarcusRashford"
     category = "Sportivi"
-    get_replies(username, category)
-    csv_cleaning(username, category)
-    calculate_vader_score(username, category)
-    calculate_hatespeech_score(username, category)
-    create_score_csv(username, category)
+    #get_replies(username, category)
+    #csv_cleaning(username, category)
+    #calculate_vader_score(username, category)
+    #calculate_hatespeech_score(username, category)
+    #create_score_csv(username, category)
+    #gr.userAverage(category)
+    #gr.vaderGraph(category)
+    gr.sonarGraph(category)

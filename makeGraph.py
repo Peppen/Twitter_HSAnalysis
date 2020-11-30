@@ -1,12 +1,15 @@
 import csv
 import os
+
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import numpy as np
 
 
-def calculateAvarage(category):
-    os.chdir("C:\\Users\\peppe\\PycharmProjects\\Twitter_HSAnalysis\\" + category)
+#Calculate average for each user of the category taken by argument
+def userAverage(category):
+    os.chdir("./" + category)
     for f in os.listdir():
         if f.endswith("_rates.csv"):
             df = pd.read_csv(f)
@@ -50,8 +53,9 @@ def calculateAvarage(category):
                     writer.writerows(rates)
 
 
-def makePositiveNegativeRate(category):
-    os.chdir("C:\\Users\\peppe\\PycharmProjects\\Twitter_HSAnalysis\\" + category)
+#Save vader graph of the category taken by input
+def vaderGraph(category):
+    os.chdir("./" + category)
     for f in os.listdir():
         if f.endswith("_average.csv"):
             df = pd.read_csv(f)
@@ -75,11 +79,15 @@ def makePositiveNegativeRate(category):
             results = [positives, negatives, neutrals]
             plt.yticks(results)
             plt.bar(rate, results)
-            plt.show()
+            plt.show(block=False)
+            plt.pause(2)
+            plt.savefig("../" + category + "/" + category + "_vaderGraph.png")
+            plt.close()
 
 
-def makeHateOffensiveGraph(category):
-    os.chdir("C:\\Users\\peppe\\PycharmProjects\\Twitter_HSAnalysis\\" + category)
+#Save sonar graph of the category taken by input
+def sonarGraph(category):
+    os.chdir("./" +category)
     for f in os.listdir():
         if f.endswith("_average.csv"):
             df = pd.read_csv(f)
@@ -103,4 +111,7 @@ def makeHateOffensiveGraph(category):
             results = [hates, offensives, neithers]
             plt.yticks(results)
             plt.bar(rate, results)
-            plt.show()
+            plt.show(block=False)
+            plt.pause(2)
+            plt.savefig("../"+category+"/"+category+"_sonarGraph.png")
+            plt.close()
