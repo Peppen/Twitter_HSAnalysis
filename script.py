@@ -167,13 +167,13 @@ def create_score_csv(username, category):
 
 if __name__ == '__main__':
     # Fornisco l'username e categoria
-    username = "MarcusRashford"
+    username = "rickygervais"
     category = "Attori"
-    #get_replies(username, category)
-    #csv_cleaning(username, category)
-    #calculate_vader_score(username, category)
-    #calculate_hatespeech_score(username, category)
-    #create_score_csv(username, category)
+    get_replies(username, category)
+    csv_cleaning(username, category)
+    calculate_vader_score(username, category)
+    calculate_hatespeech_score(username, category)
+    create_score_csv(username, category)
     #gr.user_average(category)
     #gr.vader_graph(category)
-    gr.sonar_graph(category)
+    #gr.sonar_graph(category)

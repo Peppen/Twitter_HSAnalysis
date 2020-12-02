@@ -63,7 +63,7 @@ def vader_graph(category):
             negative_rate = df["Negative Rate"]
             neutral_rate = df["Neutral Rate"]
             plt.title("Results of " + category)
-            rate = ["Positive Rate", "Negative Rate", "Neutral Rate"]
+            rate = ["Negative Rate", "Positive Rate", "Neutral Rate"]
             positives = 0
             negatives = 0
             neutrals = 0
@@ -76,9 +76,9 @@ def vader_graph(category):
             for neutral in neutral_rate:
                 neutrals += neutral
             neutrals = neutrals / len(neutral_rate)
-            results = [positives, negatives, neutrals]
+            results = [negatives, positives, neutrals]
             plt.yticks(results)
-            plt.bar(rate, results)
+            plt.bar(rate, results,color=['#ff1a1a','#1a1aff','lightgrey'])
             plt.show(block=False)
             plt.pause(2)
             plt.savefig("../" + category + "/" + category + "_vaderGraph.png")
@@ -110,7 +110,7 @@ def sonar_graph(category):
             neithers = neithers/len(neither_rate)
             results = [hates, offensives, neithers]
             plt.yticks(results)
-            plt.bar(rate, results)
+            plt.bar(rate, results,color=['#ff1a1a','#ff6600','lightgrey'])
             plt.show(block=False)
             plt.pause(2)
             plt.savefig("../"+category+"/"+category+"_sonarGraph.png")
