@@ -9,20 +9,20 @@ Just clone the github repository to get all the files you need to execute the co
 ### Prerequisites
 
 All you need to install is Python 3.7 (we use Anaconda3 environment but it's the same) and these libraries:
-* Twarc
-* csv
-* re
-* Pandas
-* Vader
-* HateSonar
-* Matplotlib
+* *Twarc*, Python library for archiving Twitter data.
+* *csv*, for providing functionality to both read from and write to CSV files.
+* *re*, which can be used to work with Regular Expressions.
+* *Pandas*, a high-level data manipulation tool.
+* *Vader*, lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media.
+* *HateSonar*, for detecting hate speech and offensive language in text, without the need for training.
+* *Matplotlib*, a comprehensive library for creating static, animated, and interactive visualizations.
 
 
 ## Running and tests
 
-For testing the application you have to run *script.py* making some changes:
+For testing the application you have to run *[script.py]*(https://github.com/Peppen/Twitter_HSAnalysis/blob/main/script.py) making some changes:
 
-* In the main change "username" and "category" to obtain results for the desired user:
+* In the main change *username* and *category* to obtain results for the desired user:
 ```
 username = "twitterUsername"
 category = "The social category which the user belongs to" (It will be also a folder name)
@@ -36,9 +36,9 @@ create_score_csv
 ```
 
 These are the functions required to obtain replies and scores calculated by the tools.
-After you've obtained a good number of .csv you can generate graphs by using the functions contained in make_graph.py.
-Firstly execute user_average, then you can execute one of the function to generate the graph (not both together).
-The output of vader_graph and sonar_graph functions will be saved in the corresponding folder of the category.
+After you've obtained a good number of .csv you can generate graphs by using the functions contained in *[make_graph.py]*(https://github.com/Peppen/Twitter_HSAnalysis/blob/main/make_graph.py).
+First you have to execute user_average, then you can execute one of the function to generate the graph (not both together).
+The output of *vader_graph* and *sonar_graph* functions will be saved in the corresponding folder of the category.
 
 
 
