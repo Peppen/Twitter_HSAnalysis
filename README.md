@@ -20,25 +20,22 @@ All you need to install is Python 3.7 (we use Anaconda3 environment but it's the
 
 ## Running and tests
 
-script.py
+For testing the application you have to run *script.py* making some changes:
 
 * In the main change "username" and "category" to obtain results for the desired user:
-> username = "twitterUsername"
-
-> category = "The social category which the user belongs to" (It will be also a folder name)
-
-
+```
+username = "twitterUsername"
+category = "The social category which the user belongs to" (It will be also a folder name)
+```
 * Uncomment the functions that you want to use, some functions are sequential:
-> get_replies
-
-> csv_cleaning
-
-> calculate_vaderscore/calculate_hatespeech_score
-
-> create_score_csv 
+```
+get_replies
+csv_cleaning
+calculate_vaderscore/calculate_hatespeech_score
+create_score_csv 
+```
 
 These are the functions required to obtain replies and scores calculated by the tools.
-
 After you've obtained a good number of .csv you can generate graphs by using the functions contained in make_graph.py.
 Firstly execute user_average, then you can execute one of the function to generate the graph (not both together).
 The output of vader_graph and sonar_graph functions will be saved in the corresponding folder of the category.
