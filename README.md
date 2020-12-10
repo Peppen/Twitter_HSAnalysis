@@ -1,6 +1,6 @@
 # Twitter Hate Speech Analysis
 
-A python script that analyse tweets and their comments to understand how much user categories are affected by hate speech. With an addition of a comparison beetween Vader and Hate Sonar results.
+A Python script that analyse tweets and their comments to understand how much user categories are affected by hate speech. With an addition of a comparison between Vader and Hate Sonar results.
 
 ## Getting Started
 Just clone the github repository to get all the files you need to execute the code.
@@ -8,7 +8,7 @@ Just clone the github repository to get all the files you need to execute the co
 
 ### Prerequisites
 
-All you need to install is Python 3.7 (we use Anaconda3 environment but it's the same) and these libraries:
+All you need to install is *Python 3.7* (we use *Anaconda3* environment but it's the same) and these libraries:
 * *Twarc*, Python library for archiving Twitter data.
 * *csv*, for providing functionality to both read from and write to CSV files.
 * *re*, which can be used to work with Regular Expressions.
