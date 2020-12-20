@@ -25,14 +25,14 @@ For testing the application you have to run *[script.py](https://github.com/Pepp
 * In the main change *username* and *category* to obtain results for the desired user:
 ```
 username = "twitterUsername"
-category = "The social category which the user belongs to" (It will be also a folder name)
+category = "The social category which the user belongs to (It will be also a folder name)"
 ```
 * Uncomment the functions that you want to use, some functions are sequential:
 ```
-get_replies
-csv_cleaning
-calculate_vaderscore/calculate_hatespeech_score
-create_score_csv 
+get_replies(username, category)
+csv_cleaning(username, category)
+calculate_vaderscore(username, category)/calculate_hatespeech_score(username, category)
+create_score_csv(username, category)
 ```
 
 These are the functions required to obtain replies and scores calculated by the tools.
