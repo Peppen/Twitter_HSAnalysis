@@ -31,7 +31,8 @@ category = "The social category which the user belongs to (It will be also a fol
 ```
 get_replies(username, category)
 csv_cleaning(username, category)
-calculate_vaderscore(username, category)/calculate_hatespeech_score(username, category)
+calculate_vaderscore(username, category)
+calculate_hatespeech_score(username, category)
 create_score_csv(username, category)
 ```
 
