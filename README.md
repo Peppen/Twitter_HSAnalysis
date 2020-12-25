@@ -23,7 +23,7 @@ For testing the application you have to run *[script.py](https://github.com/Pepp
 
 * In the main change *username* and *category* to obtain results for the desired user:
 ```
-username = "twitterUsername"
+username = "Twitter Username"
 category = "The social category which the user belongs to (It will be also a folder name)"
 ```
 * Uncomment the functions that you want to use, some functions are sequential:
