@@ -132,8 +132,6 @@ def create_score_csv(username, category):
     neither_sum = 0
     rates = []
 
-
-
     for i,row in df.iterrows():
         pos_sum += row["Positive"]
         neg_sum += row["Negative"]
@@ -149,9 +147,7 @@ def create_score_csv(username, category):
     offensive_sum = str(round((offensive_sum / len(df.index))*100,2))
     neither_sum = str(round((neither_sum / len(df.index))*100,2))
 
-
     rateFile = "./"+category+"/"+username+"_rates.csv"
-
 
     if(os.path.isfile(rateFile)):
         rates.append([username, category, pos_sum, neg_sum, neut_sum, hatespeech_sum, offensive_sum, neither_sum])
@@ -168,12 +164,12 @@ def create_score_csv(username, category):
 if __name__ == '__main__':
     # Fornisco l'username e categoria
     username = "rickygervais"
-    category = "Attori"
-    get_replies(username, category)
-    csv_cleaning(username, category)
-    calculate_vader_score(username, category)
-    calculate_hatespeech_score(username, category)
-    create_score_csv(username, category)
+    category = "Giornalismo"
+    #get_replies(username, category)
+    #csv_cleaning(username, category)
+    #calculate_vader_score(username, category)
+    #calculate_hatespeech_score(username, category)
+    #create_score_csv(username, category)
     #gr.user_average(category)
     #gr.vader_graph(category)
-    #gr.sonar_graph(category)
+    gr.sonar_graph(category)
