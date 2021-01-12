@@ -19,7 +19,7 @@ All you need to install is *Python 3.7* (we use *Anaconda3* environment but it's
 
 ## Running and tests
 
-For testing the application you have to run *[script.py](https://github.com/Peppen/Twitter_HSAnalysis/blob/main/script.py)* making some changes:
+For testing the application you have to run *[extract.py](https://github.com/Peppen/Twitter_HSAnalysis/blob/main/extract.py)* making some changes:
 
 * In the main change *username* and *category* to obtain results for the desired user:
 ```
