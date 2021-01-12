@@ -7,7 +7,7 @@ Just clone the github repository to get all the files you need to execute the co
 
 ### Prerequisites
 
-All you need to install is *Python 3.7* (we use *Anaconda3* environment but it's the same) and these libraries:
+All you need to install is *Python 3.7* (we used *Anaconda3* environment but it's the same) and these libraries:
 * *Twarc*, Python library for archiving Twitter data.
 * *csv*, for providing functionality to both read from and write to CSV files.
 * *re*, which can be used to work with Regular Expressions.
@@ -48,7 +48,7 @@ The output of *vader_graph* and *sonar_graph* functions will be saved in the cor
 * [Anaconda3](https://www.anaconda.com/) - Package Management
 * [Twarc](https://github.com/DocNow/twarc) - Tool to obtain replies through twitter API
 * [Vader](https://github.com/cjhutto/vaderSentiment) - Tool to analyse sentiment of the comments
-* [Hate Sonar](https://github.com/Hironsan/HateSonar) - Tool to analys sentiment of the comments with a focus on hate speech
+* [Hate Sonar](https://github.com/Hironsan/HateSonar) - Tool to analyse sentiment of the comments with a focus on hate speech and offensive rate
 
 
 ## Authors
