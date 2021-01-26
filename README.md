@@ -17,7 +17,7 @@ All you need to install is *Python 3.7* (we used *Anaconda3* environment but it'
 * *Matplotlib*, a comprehensive library for creating static, animated, and interactive visualizations.
 
 
-## Running and tests
+## Running and Tests
 
 For testing the application you have to run *[extract.py](https://github.com/Peppen/Twitter_HSAnalysis/blob/main/extract.py)* making some changes:
 
